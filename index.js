@@ -1,3 +1,8 @@
+const redux = require("redux")
+const createStore = redux.createStore
+
+
+
 const BUY_CAKE = 'BUY_CAKE'
 
 
@@ -23,3 +28,21 @@ const reducer= (state = initialState, action) => {
     default: return state
   }
 }
+//1. Holds application state
+const store = createStore(reducer)
+
+//2. Allow access to state via getState()
+console.log('Initial state', store.getState())
+
+// 3. Allows state to be updated via dispatch(action)
+
+
+
+//4. Register listeners via subscribe
+const unsubscribe= store.subscribe(()=> console.log("Update state", store.getState()))
+
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+store.dispatch(buyCake())
+unsubscribe()
+
