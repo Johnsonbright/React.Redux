@@ -1,6 +1,10 @@
 const redux = require("redux")
+const reduxLogger = require('redux-logger')
+
 const createStore = redux.createStore
 const combineReducers = redux.combineReducers
+const applyMiddleware = redux.applyMiddleware
+const logger = reduxLogger.createLogger()
 
 
 
@@ -74,7 +78,7 @@ const rootReducer = combineReducers({
 
 
 //1. Holds application state
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(logger))
 
 //2. Allow access to state via getState()
 console.log('Initial state', store.getState())
@@ -84,7 +88,7 @@ console.log('Initial state', store.getState())
 
 
 //4. Register listeners via subscribe
-const unsubscribe= store.subscribe(()=> console.log("Update state", store.getState()))
+const unsubscribe= store.subscribe(()=> {})
 
 store.dispatch(buyCake())
 store.dispatch(buyCake())
