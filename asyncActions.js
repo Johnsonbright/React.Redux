@@ -5,7 +5,7 @@ const reducer = (state = {}, action) => state;
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
-console.log('Store created successfully!');
+console.log('Store created successfully!!!');
 
 
 // const redux = require('redux')
